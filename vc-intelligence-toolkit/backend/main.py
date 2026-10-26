@@ -12,6 +12,7 @@ from app.api.navigator import router as navigator_router
 from app.api.reports import router as reports_router
 from app.core.config import settings
 from app.utils.logger import get_logger
+from app.api.investment_thesis import router as investment_thesis_router
 
 logger = get_logger(__name__)
 
@@ -37,6 +38,7 @@ app.include_router(moatlens_router)
 app.include_router(navigator_router)
 app.include_router(history_router)
 app.include_router(reports_router)
+app.include_router(investment_thesis_router)
 
 
 @app.get("/health")
