@@ -4,6 +4,7 @@ from app.models.reasoning_log import ReasoningLog
 from app.models.report import Report, ReportType
 from app.models.run import Run
 from app.models.swarmspace_application import SwarmspaceApplication
+from app.models.investment_thesis import InvestmentThesisRule, ScreeningResult
 
 __all__ = [
     "Candidate",
@@ -13,4 +14,6 @@ __all__ = [
     "ReportType",
     "Run",
     "SwarmspaceApplication",
+    "InvestmentThesisRule",
+    "ScreeningResult",
 ]
