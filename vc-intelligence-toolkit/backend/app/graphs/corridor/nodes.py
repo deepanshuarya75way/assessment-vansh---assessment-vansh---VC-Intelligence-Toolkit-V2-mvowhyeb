@@ -20,25 +20,39 @@ logger = get_logger(__name__)
 
 
 async def fetch_github_node(state: dict[str, Any]) -> dict[str, Any]:
-    logger.info("Fetching GitHub repositories...")
+    print("🚀 CORRIDOR FETCH FUNCTION EXECUTED", flush=True)
+    logger.info("========== GITHUB RESULTS ==========")
     results = await search_github(state["search_query"], limit=10)
-    logger.info("Found %s GitHub results", len(results))
+
+    for i, result in enumerate(results, 1):
+        logger.info("GitHub Result %s:\n%s", i, result)
+
+    logger.info("Total GitHub results: %s", len(results))
     return {"github_results": results}
 
 
 async def fetch_hn_node(state: dict[str, Any]) -> dict[str, Any]:
-    logger.info("Fetching Hacker News stories...")
+    print("🚀 CORRIDOR FETCH FUNCTION EXECUTED", flush=True)
+    logger.info("========== HACKER NEWS RESULTS ==========")
     results = await search_hackernews(state["search_query"], limit=10)
-    logger.info("Found %s Hacker News results", len(results))
+
+    for i, result in enumerate(results, 1):
+        logger.info("Hacker News Result %s:\n%s", i, result)
+
+    logger.info("Total Hacker News results: %s", len(results))
     return {"hn_results": results}
 
 
 async def fetch_arxiv_node(state: dict[str, Any]) -> dict[str, Any]:
-    logger.info("Fetching arXiv papers...")
+    print("🚀 CORRIDOR FETCH FUNCTION EXECUTED", flush=True)
+    logger.info("========== ARXIV RESULTS ==========")
     results = await search_arxiv(state["search_query"], limit=10)
-    logger.info("Found %s arXiv results", len(results))
-    return {"arxiv_results": results}
 
+    for i, result in enumerate(results, 1):
+        logger.info("arXiv Result %s:\n%s", i, result)
+
+    logger.info("Total arXiv results: %s", len(results))
+    return {"arxiv_results": results}
 
 def merge_node(state: dict[str, Any]) -> dict[str, Any]:
     logger.info("Merging discovery results...")
