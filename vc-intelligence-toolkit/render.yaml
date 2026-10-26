@@ -1,0 +1,39 @@
+# Render Blueprint for the FastAPI backend only.
+# This deploys the service from the backend/ directory and leaves the frontend out of the Render configuration.
+services:
+  # Web service for the FastAPI application.
+  - type: web
+    name: vc-intelligence-toolkit-backend
+    env: python
+    plan: free
+    branch: main
+    rootDir:  vc-intelligence-toolkit/backend
+    autoDeploy: true
+    pythonVersion: 3.12.10
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      # Groq API credentials used by backend model calls.
+      - key: GROQ_API_KEY
+        sync: false
+      # Supabase endpoint used by backend data access.
+      - key: SUPABASE_URL
+        sync: false
+      # Supabase service key used by backend data access.
+      - key: SUPABASE_KEY
+        sync: false
+      # Database connection string for the backend.
+      - key: DATABASE_URL
+        sync: false
+      # Primary model name used by backend services.
+      - key: MODEL_NAME
+        sync: false
+      # Embedding model name used by backend services.
+      - key: EMBEDDING_MODEL
+        sync: false
+      # Log verbosity for backend runtime logs.
+      - key: LOG_LEVEL
+        sync: false
+      # GitHub token used by backend integrations.
+      - key: GITHUB_TOKEN
+        sync: false
